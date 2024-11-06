@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        body{
+            
+            /* background-image: url("../img/bg.avif"); */
+            background-image: url("https://img.freepik.com/premium-photo/abstract-colorful-background-with-gradient-red-orange-purple-blue-shades_36682-139626.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            width:100%;
+            /* backdrop-filter: blur; */
+            
+            /* background-blend-mode: darken; */
+        }
+        table{
+            margin-top: 30px;
+            padding: 50px;
+            background-color: rgba(137, 112, 112, 0.3);
+            backdrop-filter: blur(3px);
+            border-radius: 3px;
+            /* border:1px solid rgba(0,0,0,0.8); */
+            border:1px solid white;
+        }
+        h2{
+            text-align: center;
+            margin-bottom: 15px ;
+            font-size: 30px;
+            color: white;
+        }
+        input,select{
+            /* width:200%; */
+            padding:15px 120px 15px 15px;
+            border:1px solid white;
+            /* background-color: black;
+            color: white; */
+            border-radius: 3px;
+            margin: 10px 0;
+            text-align: left;
+            /* height:30px; */
+        }
+        select{
+            padding-right: 168px;
+        }
+        button{
+            width:300px;
+            height:40px;
+            margin: 10px 0;
+            background-color: rgba(0,0,0,0.7);
+            color:white;
+            border:1px solid white;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        /* form{
+            text-align: center;
+        } */
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- <div>
+        <a href="home.ejs">Home-page</a>
+    </div> -->
+
+    <table>
+        <form action="editData/<%= data._id %>" method="post" id="form">
+            <tr>
+                <td>
+                    <h2>Product Details :-</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="hidden" id="productid" value="<%= data._id %>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" placeholder="Enter product name" id="productName" value="<%= data.productName %>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" placeholder="Enter price" id="price"   value="<%= data.price %>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" placeholder="Enter rating" id="rate" value="<%= data.rate %>">
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    <select id="category" value="<%= data.category %>">
+                        <option value="">Select Category</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="shoes">Shoes</option>
+                        <option value="watch">Watch</option>
+                    </select>
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    <input type="number" placeholder="Enter the quantity" id="quantity" value="<%= data.quantity %>">
+                </td>
+            </tr>
+           <tr>
+               <td>
+                    <input type="text" placeholder="Enter Description" id="description" value="<%= data.description %>">
+               </td>
+           </tr> 
+           <tr>
+            <td>
+                 <!-- <input type="submit" value="AddData">  -->
+                 <button id="submit">Add Data</button>
+            </td>
+           </tr>
+        </form>
+    </table>
+    
+    <script>
+
+        // catching the form with the id
+
+        let form = document.querySelector("#form")
+
+        // add event listner to the form
+
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault()
+            let productid = document.querySelector("#productid").value;
+            let productName = document.querySelector("#productName").value
+            let price = document.querySelector("#price").value
+            let rate = document.querySelector("#rate").value
+            let category = document.querySelector("#category").value
+            let quantity = document.querySelector("#quantity").value
+            let description = document.querySelector("#description").value
+
+            console.log(productName,price,rate,category,quantity,description)
+            fetch(`/proRoute/editData/${productid}`,{
+                method:"PATCH",
+                body:JSON.stringify({productName,price,rate,category,quantity,description}),
+                headers:{
+                    "content-type":"application/json;charset=UTF-8"
+                }
+            }).then((res) => res.json())
+              .then((data) => console.log(data))
+              .catch((err) => console.log(err))
+
+              document.querySelector("#productName").value = ""
+              document.querySelector("#price").value = ""
+              document.querySelector("#rate").value = ""
+              document.querySelector("#category").value = ""
+              document.querySelector("#quantity").value = ""
+              document.querySelector("#description").value = ""
+           
+        })
+
+    </script>
+
+</body>
+</html>

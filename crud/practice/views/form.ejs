@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="/addData" method="post">
+        <table border="1" align="center">
+            <tr>
+                <td>
+                    <label for="">Id:</label>
+                    <input type="number" name="id" name="id">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Name:</label>
+                    <input type="text" name="name" id="name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Email:</label>
+                    <input type="email" name="email" id="email">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Phone no:</label>
+                    <input type="number" name="phoneNo" id="phoneNo">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Add-data">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id:</th>
+                <th>Name:</th>
+                <th>Email:</th>
+                <th>Phone No:</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+           <% student.map((item)=>{ %>
+                <tr>
+                    <td><%= item.id %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.email %></td>
+                    <td><%= item.phoneNo %></td>
+                    <td><a href="/edit?id=<%=item.id%>">Edit</a></td>
+                    <td><a href="/delete?id=<%=item.id%>">Delete</a></td>
+                </tr>
+                <!-- <tr>    
+                </tr>
+                <tr>    
+                </tr>
+                <tr>    
+                </tr>
+                <tr>    
+                </tr>
+                <tr>    
+                </tr> -->
+           <% }) %>
+        </tbody>
+    </table>
+    
+</body>
+</html>

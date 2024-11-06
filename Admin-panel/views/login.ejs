@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #D2E0FB;
+        }
+        h1{
+            text-align: center;
+            font-size: 40px;
+            color:#295F98;
+            margin-top: 60px ;
+        }
+        .main{
+            border:5px solid rgba(41, 95, 152,0.7);
+            border-radius: 10px;
+            padding:50px;
+            width:25%;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        input{
+            margin: 10px 0;
+            padding-left: 15px;
+            width:250px;
+            height:50px;
+            border-radius: 5px;
+            border:none;
+        }
+        .btn{
+            width:250px;
+            height:50px;
+            border-radius: 5px;
+            border:none;
+            background-color: rgb(89, 102, 126);
+            color:white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Let's Login to Connect </h1>
+
+    
+<div style="text-align: center;">
+    <a href="/adminRoutes/login">Login</a>
+<a href="/adminRoutes/register">Register</a>
+<a href="/proRoute/form">Form</a>
+<a href="/proRoute/getData">Home</a>
+</div>
+
+    <div class="main">
+        <form action="/loginData" method="post" id="form">
+            <div>
+                <span><input type="email" placeholder="Enter Your Email" id="email"></span>
+            </div>
+            <div>
+                <span><input type="password" placeholder="Enter Your Password" id="pass"></span>
+            </div>
+            <div>
+                <button class="btn" id="submit">Submit</button>
+            </div>
+            <div>
+                <a href="update">Update Password</a>
+                <a href="/adminRoutes/generateOTP">forgot password</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+let form = document.querySelector("#form")
+
+form.addEventListener("submit",(e)=>{
+    e.preventDefault()
+    let email = document.querySelector("#email").value
+    let pass = document.querySelector("#pass").value
+
+    console.log(name,email,pass)
+    fetch("/adminRoutes/loginData",{
+        method:"post",
+        body:JSON.stringify({email,pass}),
+        headers:{
+            "content-type":"application/json;charset=UTF-8"
+        }
+    }).then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err))
+
+      document.querySelector("#email").value = ""
+      document.querySelector("#pass").value = ""
+   
+})
+
+    </script>
+    
+</body>
+</html>

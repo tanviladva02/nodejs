@@ -1,0 +1,7 @@
+// 1 install express
+// 2 create server
+// 3 create default route
+// 4 connect app with mongodb with the help of mongoose
+// 5 created model and schema with the help of mongoose
+// 6 created routes for adding , deleting , getting and updating the data in mongodb
+// 7 completed the crud operation with the help of postman

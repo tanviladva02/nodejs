@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(196, 165, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <h1>Reset Your Password</h1>
+        <form id="resetForm">
+            <div>
+                <label for="email">Enter email</label>
+                <input type="text" id="email" name="otp" required>
+            </div>
+            <div>
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" name="otp" required>
+            </div>
+            <div>
+                <label for="password">New Password</label>
+                <input type="password" id="password" name="newPassword" required>
+            </div>
+            <div>
+                <button type="submit">Reset Password</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        console.log("running")
+        let resetForm = document.querySelector("#resetForm")
+        resetForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let otp = document.querySelector("#otp").value;
+            let newPassword = document.querySelector("#password").value;
+            let email = document.querySelector("#email").value;
+            console.log(otp, newPassword)
+
+            fetch("/adminRoutes/verifyOtp", {
+                method: "POST",
+                body: JSON.stringify({ email, otp, newPassword }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then((res) => res.json())
+                .then((data) => console.log(data, "otp sent"))
+                .catch((error) => console.log(error))
+        })
+
+    </script>
+
+</body>
+
+</html>

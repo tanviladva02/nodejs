@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/addData" method="post" enctype = "multipart/form-data">
+        <table>
+            <tr>
+                <td>Name : </td>
+                <td><input type="text" name="name" autofocus></td>
+            </tr>
+            <tr>
+                <td>Email : </td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>Age : </td>
+                <td><input type="number" name="age"></td>
+            </tr>
+            <tr>
+                <td>Password : </td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>Profile : </td>
+                <td><input type="file" name="image"></td>
+            </tr>
+            <tr>
+                <td>Submit : </td>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+
+    <table border="1px">
+        <tr>
+            <th>Name : </th>
+            <th>Email : </th>
+            <th>Age : </th>
+            <th>Password : </th>
+            <th>Profile : </th>
+            <th>Edit : </th>
+            <th>Delete : </th>
+        </tr>
+        <% userData.map((item)=>{ %>
+            <tr>
+                <td align="center">
+                    <%= item.name %>
+                </td>
+                <td align="center">
+                    <%= item.email %>
+                </td>
+                <td align="center">
+                    <%= item.age %>
+                </td>
+                <td align="center">
+                    <%= item.password %>
+                </td>
+                <td align="center">
+                    <img src="<%=item.image %>" alt="image" title="image" width="100px" height="100px">
+                </td>
+                <td align="center">
+                    <button>
+                        <a href="/edit/<%= item._id %>">Edit</a>
+                    </button>
+                </td>
+                <td>
+                    <button>
+                        <a href="/delete?id=<%= item._id %>">Delete</a>
+                    </button>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="/addData" method="post" enctype="multipart/form-data"> // emctype - encryption type
+        <table>
+            <tr>
+                <td>name</td>
+                <td><input type="text" name="name"></td>
+            </tr> 
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="number" name="age"></td>
+            </tr>
+            <tr>
+                <td>Image</td>
+                <td><input type="file" name="image"></td>
+            </tr>
+            <tr>
+                <td>submit</td>
+                <td><input type="submit"></td>
+            </tr>
+        </table>
+    </form>
+    
+    <h2 style="text-align: center;">Data :-</h2>
+    <table border="2" align="center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Image</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.map((item)=> { %>
+                <tr>
+                    <td>
+                        <%= item.name %>
+                    </td>
+                    <td>
+                        <%= item.email %>
+                    </td>
+                    <td>
+                        <%= item.age %>
+                    </td>
+                    <td>
+                        <img src=<% = item.image %> alt="img" width="100px" height="100px">
+                    </td>
+                    <td>
+                        <button>
+                            <a href="/update/<%= item._id %>">Edit</a>
+                        </button>
+                    </td>
+                    <td>    
+                        <button>
+                            <a href="/delete/<%= item._id %>">Delete</a>
+                        </button>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+    
+    <!-- <script src="../model/model.student.js"></script> -->
+</body>
+</html>

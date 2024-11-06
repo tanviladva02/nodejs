@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(196, 165, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <h1>Generate Otp </h1>
+        <form id="resetForm">
+            <div>
+                <label for="email">Enter email</label> <br>
+                <input type="text" id="email" name="otp" required placeholder="Entere your eamil">
+            </div>
+
+            <br>
+            <div>
+                <button type="submit">Generare Otp </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+          let resetForm = document.querySelector("#resetForm");
+        
+        resetForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let email = document.querySelector("#email").value;
+
+            fetch("/adminRoutes/generateOtp", {
+                method: "POST",
+                body: JSON.stringify({ email }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then((res) => {
+                    res.json()
+
+                })
+                .then((data) => {
+                    window.location.href = "/adminRoutes/verifyOtp";
+                    console.log(data, "otp generated");
+                })
+                .catch((error) => console.log(error));
+
+            window.location.href = "/adminRoutes/verifyOtp";
+        })
+    </script>
+
+</body>
+
+</html>

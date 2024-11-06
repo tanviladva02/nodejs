@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data</title>
+    <style>
+        body {
+            background-color: rgb(249, 255, 187);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Edit Student Data</h1>
+    <form method="post" action="/editData">
+        <table border="2" align="center">
+            <tr>
+                <td>Id</td>
+                <td><input type="number" name="id" value="<%= editData.id %>" readonly></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" value="<%= editData.name %>"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="email" value="<%= editData.email %>"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="phoneNo" value="<%= editData.phoneNo %>"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

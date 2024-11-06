@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="/editData" method="post">
+        <table border="1" align="center">
+            <tr>
+                <td>
+                    <label for="">Id:</label>
+                    <input type="number" name="id" value="<%= editData.id %>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Name:</label>
+                    <input type="text" name="name" value="<%= editData.name %>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Email:</label>
+                    <input type="email" name="email" value="<%= editData.email %>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Phone no:</label>
+                    <input type="number" name="phoneNo" value="<%= editData.phoneNo %>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Add-data">
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: url(https://w0.peakpx.com/wallpaper/855/509/HD-wallpaper-simple-background-edit-and-simple-design.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        a{
+            display: inline-block;
+            text-decoration: none;
+            color:black;
+        }
+        .main-container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+         h1{
+            text-align: center;
+            font-size: 50px;
+            margin:20px 0;
+         }
+        .main{
+            border:1px solid black;
+            padding:50px 0;
+            margin:9px;
+            border-radius: 7px;
+            display: inline-block;
+            text-align: center;
+            width:32%;
+        }
+        .name{
+            font-size: 30px;
+            color:#343131
+        }
+        .price{
+            font-size: 20px;
+            margin:13px 0;
+            color:#FF6868;
+        }
+        .rate{
+            color:#FFAF45;
+        }
+        .cate{
+            font-size: 18px;
+            margin: 13px 0;
+            color:#536493;
+        }
+        .quantity{
+            font-size: 16px;
+            color:#799351;
+        }
+        .des{
+            font-size: 16px;
+            margin: 13px 0;
+            color:#A94438;
+        }
+        .btn{
+            background-color: #D2E0FB;
+            border:1px solid #536493;
+            padding:10px 20px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome to home page</h1>
+
+<div style="text-align: center;">
+    <a href="/adminRoutes/login">Login</a>
+<a href="/adminRoutes/register">Register</a>
+<a href="/proRoute/form">Form</a>
+<a href="/proRoute/getData">Home</a>
+</div>
+
+<div class="main-container">
+    <% data.map((item)=>{ %>
+         <div class="main">
+            <h2 class="name"> Product : <%= item.productName %></h2>
+            <h3 class="price">( ₹ <%= item.price %> )</h3>
+            <h3 class="rate">Rating :- <%= item.rate %></h3>
+            <h3 class="cate">Category :- <%= item.category %></h3>
+            <h3 class="quantity">Quantity :- <%= item.quantity %></h3>
+            <h3 class="des">Description :- <%= item.description %></h3>
+            <!-- <button><a href="/proRoute/delete?id=<%= item._id %>">Delete</a></button> -->
+            <button onclick="deleteFun('<%= item.id %>')" class="btn">Delete</button>
+            <a href="/proRoute/edit/<%=item._id %>" class="btn">Edit</a>
+        </div>
+    <% }) %>
+</div>
+
+<script>
+
+    function deleteFun(id){
+        fetch(`/proRoute/delete/${id}`,{
+            method:"delete",
+        }).then((res)=>{
+            window.location.reload() // refresh
+            console.log(("data deleted succesfully"))
+        })
+        .catch((error) => console.log("something went wrong",error))
+    }
+
+    // function editFun(id){
+    //     fetch(`/prodRoute/editPage`, {
+    //             method: "POST"
+    //         })
+    // }
+
+</script>
+
+</body>
+</html>

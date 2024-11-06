@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        body{
+            background: url(https://media.istockphoto.com/id/1344706317/vector/abstract-blue-green-background-geometric-texture.jpg?s=612x612&w=0&k=20&c=jKpw9_RXYLqq_Hb-u1gt39uDddSILTdphKWC3TpPCCE=),rgba(1,1,1,0.5);
+            width:100%;
+            height:100vh;
+            object-fit: cover;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-blend-mode: darken;
+        }
+        form{
+            background-color: white;
+            width:50%;
+            text-align: center;
+            padding:100px 0;
+            border-radius: 12px;
+        }
+        h1{
+            font-size: 30px;
+            padding-bottom: 25px;
+            color:#019796;
+        }
+        input{
+            width:70%;
+            height:45px;
+            margin-bottom: 20px;
+            border-color: #019796;
+        }
+        input::placeholder{
+            padding-left: 20px;
+        }
+        button{
+            background-color: rgba(127, 255, 212,0.7);
+            color:#019796;
+            border:none;
+            width:70%;
+            height:45px;
+            font-size: 16px;
+        }
+        h2{
+            color:white;
+            margin: 25px 0;
+            font-size: 20px;
+        }
+        a{
+            color:#019796;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <form action="loginData" id="form" method="post">
+        <h1>Let's Login</h1>
+        <div>
+            <input type="email" placeholder="Enter your email" id="email">
+        </div>
+        <div>
+            <input type="text" placeholder="Enter your password" id="password">
+        </div>
+        <div>
+            <!-- <input type="button" value="Submit" id="btn"> -->
+             <button id="submit">Submit</button>
+        </div>
+    </form>
+
+    <h2>Don't have an account ? <a href="/auth/register">Register Now</a></h2>
+
+    <script>
+
+        let form = document.querySelector("#form")
+
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault()
+
+            let email = document.querySelector("#email").value;
+            let password = document.querySelector("#password").value;
+
+            fetch("/auth/loginData",{
+                method:"post",
+                body:JSON.stringify({email,password}),
+                headers:{"content-type":"application/json;charset=UTF-8"}
+            }).then((res)=>{ console.log("Added succesfully")})
+            .catch((error)=>{ console.log("Somethinf went wrong ",error)})
+
+            document.querySelector("#email").value = "";
+            document.querySelector("#password").value = "";
+
+        })
+
+    </script>
+
+    
+</body>
+</html>

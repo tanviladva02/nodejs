@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table>
+        <form action="/register" method="post">
+            <tr>
+                <th>Name:</th>
+                <th><input type="text" name="name"></th>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <th><input type="email" name="email"></th>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <th><input type="text" name="password"></th>
+            </tr>
+            <tr>
+                <th><input type="submit" value="submit"></th>
+            </tr>
+        </form>
+    </table>
+
+    <!-- <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        <% loginUserData.map((item)=>{ %>
+            <tr>
+                <td>
+                    <% item.name %>
+                </td>
+                <td>
+                    <% item.email %>
+                </td>
+                <td>
+                    <% item.password %>
+                </td>
+                <td>
+                    <button>
+                        <a href="/edit/<%= item._id %>">Edit</a>
+                    </button>
+                </td>
+                <td>
+                    <button>
+                        <a href="/delete/<%= item._id %>">Delete</a>
+                    </button>
+                </td>
+            </tr>
+       <% }) %>
+    </table> -->
+    
+</body>
+</html>

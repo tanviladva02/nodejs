@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post" action="/editData/<%= editData._id %>" enctype = "multipart/form-data">
+        <table>
+            <tr>
+                <td>Name : </td>
+                <td><input type="text" name="name" value="<%= editData.name %>"></td>
+            </tr>
+            <tr>
+                <td>Email : </td>
+                <td><input type="text" name="email" value="<%= editData.email %>"></td>
+            </tr>
+            <tr>
+                <td>Age : </td>
+                <td><input type="number" name="age" value="<%= editData.age %>"></td>
+            </tr>
+            <tr>
+                <td>Password : </td>
+                <td><input type="password" name="password" value="<%= editData.password %>"></td>
+            </tr>
+            <tr>
+                <td>Profile : </td>
+                <td>
+                    <input type="file" name="image" value="<%= editData.image %>">
+                </td>
+            </tr>
+            <tr>
+                <td>Submit : </td>
+                <td><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>
