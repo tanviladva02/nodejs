@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(108, 138, 161);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 70px;
+            color: white;
+            margin-top: 50px;
+        }
+
+        th{
+            padding:10px 0;
+        }
+
+        td{
+            padding: 0 10px;
+        }
+
+        .input, .btn {
+            padding: 10px;
+            width: 350px;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+
+        .btn {
+            background-color: rgb(38, 35, 35);
+            color: white;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn1 {
+            background-color: transparent;
+            border: none;
+        }
+
+        .spacing {
+            padding: 20px;
+            color: white;
+        }
+
+        .delete-btn, .edit-btn {
+            background-color: rgb(179, 76, 76);
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .edit-btn {
+            background-color: rgb(70, 123, 70);
+        }
+
+        .checkbox{
+            width:17px;
+            height:17px;
+        }
+
+        .task {
+            position: relative;
+        }
+
+        .line {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>To-do List :-</h1>
+
+    <div>
+        <form action="/addData" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Enter your to-do work" name="work" class="input">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Add Task" class="btn">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <table width="100%" border="">
+            <tr>
+                <th> Task </th>
+                <th> Done </th>
+                <th> Delete </th>
+                <th> Edit </th>
+            </tr>
+            <% userData.map((item, index) => { %>
+                <tr align="center">
+                    <td class="task" id="task-<%= index %>">
+                        <%= item.work %>
+                    </td>
+                    <td class="spacing">
+                        <input type="checkbox" class="checkbox" data-task-id="task-<%= index %>">
+                    </td>
+                    <td class="spacing">
+                        <button class="btn1">
+                            <a href="/delete/<%= item._id %>" class="delete-btn">Delete</a>
+                        </button>
+                    </td>
+                    <td class="spacing">
+                        <button class="btn1">
+                            <a href="/edit/<%= item._id %>" class="edit-btn">Edit</a>
+                        </button>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+
+    <script>
+        document.querySelectorAll(".checkbox").forEach(function(checkbox) {
+            checkbox.addEventListener("click", function() {
+                const taskId = this.getAttribute("data-task-id");
+                const taskElement = document.getElementById(taskId);
+                taskElement.classList.toggle("line");
+            });
+        });
+    </script>
+
+</body>
+
+</html>

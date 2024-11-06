@@ -1,0 +1,8 @@
+==> what is middleware in express
+- function that will work in between response and request (res obj & req obj )
+- server is a computer where we can save the data
+- res and req ki bich me function work karta hai which called middleware
+- validation ka kam karega
+- res,req,next ka access hota hai
+-next value ko age bhejta hai
+

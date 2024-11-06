@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+       
+        body {
+            background-color: rgb(141, 108, 161);
+        }
+
+        .input, .btn {
+            padding: 10px;
+            width: 350px;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+
+        .btn {
+            background-color: rgb(38, 35, 35);
+            color: white;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        form{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%)
+        }
+
+        h1{
+            color:white;
+            font-size: 50px;
+            text-align: center;
+            margin:50px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Update Your Task Below :-</h1>
+    
+    <form action="/editData/<%= editData._id %>" method="post">
+        <table>
+            <tr>
+                <td>
+                    <input type="text" placeholder="Update Your Task" name="work" class="input">
+                </td>
+            </tr>
+            <tr>    
+                <td>
+                    <input type="submit" value="Update Task" class="btn">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>

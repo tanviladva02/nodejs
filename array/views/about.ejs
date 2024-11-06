@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body{
+            background-color: black;
+        } */
+        h1{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to about</h1>
+
+    <table border="2" align="center">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>E-mail</th>
+            <th>Phone No</th>
+        </tr>
+
+       <% student.map((item) => {  %>
+            <tr>
+                <td><%= item.id %></td>
+                <td><%= item.name %></td>
+                <td><%= item.email %></td>
+                <td><%= item.phoneNo %></td>
+            </tr>
+        <%  })  %>
+
+    </table>
+    
+</body>
+</html>
